@@ -13,3 +13,10 @@ module "storage" {
   source = "./modules/storage"
   project_id = var.project_id
 }
+
+terraform {
+  backend "gcs" {
+      bucket = var.project_id
+      prefix = "terraform/state"
+  }
+}
