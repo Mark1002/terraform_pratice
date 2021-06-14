@@ -14,7 +14,7 @@ module "storage" {
   project_id = var.project_id
 }
 
-module "network" {
+module "vpc" {
   source  = "terraform-google-modules/network/google"
   version = "3.2.2"
   # insert the 3 required variables here
@@ -33,6 +33,23 @@ module "network" {
       subnet_region         = var.region
     }
   ]
+}
+
+resource "google_compute_firewall" "tf-firewall" {
+  name    = "tf-firewall"
+  network = module.vpc.network
+
+  allow {
+    protocol = "icmp"
+  }
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+
 }
 
 terraform {
