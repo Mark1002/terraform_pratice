@@ -10,7 +10,8 @@ resource "google_compute_instance" "tf-instance-1" {
   }
 
   network_interface {
-    network = "default"
+    network = "terraform-vpc"
+    subnetwork = "subnet-01"
 
     access_config {
       // Ephemeral IP
@@ -35,7 +36,8 @@ resource "google_compute_instance" "tf-instance-2" {
   }
 
   network_interface {
-    network = "default"
+    network = "terraform-vpc"
+    subnetwork = "subnet-02"
 
     access_config {
       // Ephemeral IP
