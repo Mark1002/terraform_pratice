@@ -54,8 +54,5 @@ resource "google_compute_firewall" "tf-firewall" {
 }
 
 terraform {
-  backend "gcs" {
-      bucket = var.project_id
-      prefix = "terraform/state"
-  }
+  backend "gcs" {}
 }
