@@ -8,6 +8,11 @@ module "instances" {
   source = "./modules/instances"
   machine_type = "n1-standard-2"
   zone   = var.zone
+
+  depends_on = [
+    module.vpc
+  ]
+
 }
 
 module "storage" {
