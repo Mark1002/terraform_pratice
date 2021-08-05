@@ -20,6 +20,11 @@ module "storage" {
   project_id = var.project_id
 }
 
+module "service_accounts" {
+  source = "./modules/service_accounts"
+  project_id = var.project_id
+}
+
 module "vpc" {
   source  = "terraform-google-modules/network/google"
   version = "3.2.2"
